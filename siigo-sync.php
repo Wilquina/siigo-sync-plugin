@@ -1,9 +1,9 @@
 <?php
 /**
  * Plugin Name: Siigo Sync
- * Description: Two-way sync of WooCommerce inventory & invoices with Siigo.
+ * Description: Two-way sync of WooCommerce products & inventory with Siigo.
  * Version:     1.0.0
- * Author:      Your Name
+ * Author:      William Quinones
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -11,11 +11,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 define( 'SIIGO_SYNC_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
-define( 'SIIGO_SYNC_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+define( 'SIIGO_API_BASE_URL',     'https://api.siigo.com' );
+define( 'SIIGO_PARTNER_ID',       'WooCommerce' );
 
-// Include required classes
 require_once SIIGO_SYNC_PLUGIN_DIR . 'includes/class-siigo-api.php';
 require_once SIIGO_SYNC_PLUGIN_DIR . 'includes/class-siigo-sync.php';
 
-// Kick off initialization
-add_action( 'plugins_loaded', array( 'Siigo_Sync', 'init' ) );
+add_action( 'plugins_loaded', [ 'Siigo_Sync', 'init' ] );
